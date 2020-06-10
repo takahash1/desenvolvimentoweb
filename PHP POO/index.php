@@ -1,10 +1,13 @@
 <?php 
 
+// CLASSE PROFESSOR 
+
 class Professor{
 
 	private $nome;
 	private $idade;
 	private $matricula;
+	
 
 	public function __construct($nome, $idade, $matricula){
 		$this->nome = $nome;
@@ -48,7 +51,18 @@ class Professor{
 		$this->matricula = $matricula;
 
 	}
+
+	public function retornaClasse(){
+		
+		get_class($obj);
+
+	}
+
 }
+
+$obj = new Professor('Bruno', 24, '2131312');
+
+// CLASSE PROFESSOR HORISTA 
 
 class ProfessorHorista extends Professor{
 
@@ -57,9 +71,9 @@ class ProfessorHorista extends Professor{
 
 	public function __construct($nome, $idade, $matricula, $salariohora, $horastrabalhadas){
 
-		$this->nome = $nome;
-		$this->idade = $idade;
-		$this->matricula = $matricula;
+		Professor::setNome($nome);
+		Professor::setIdade($idade);
+		Professor::setMatricula($matricula);
 		$this->salariohora = $salariohora;
 		$this->horastrabalhadas = $horastrabalhadas;
 		echo __CLASS__;
@@ -68,7 +82,7 @@ class ProfessorHorista extends Professor{
 
 	public function getSalarioHora(){
 
-		return $this-> salariohora;
+		return $this->salariohora;
 
 	}
 
@@ -80,7 +94,7 @@ class ProfessorHorista extends Professor{
 
 	public function getHorasTrabalhadas(){
 
-		return $this-> horastrabalhadas;
+		return $this->horastrabalhadas;
 
 	}
 
@@ -90,7 +104,22 @@ class ProfessorHorista extends Professor{
 
 	}
 
+	public function calcularSalario($salariohora, $horastrabalhadas){
+
+		$this->calcularSalario = $salariohora*$horastrabalhadas;
+		return $this->calcularSalario;
+		
+	}
+
+	public function retornaClasse(){
+		
+		get_class($obj);
+
+	}
+
 }
+
+// CLASSE PROFESSOR FIXO 
 
 class ProfessorFixo extends Professor{
 
@@ -107,13 +136,71 @@ class ProfessorFixo extends Professor{
 
 	public function getSalarioFixo(){
 
-		return $this-> salariofixo;
+		return $this->salariofixo;
 
 	}
 
 	public function setSalarioFixo($salariofixo){
 
 		$this->salariofixo = $salariofoxp;
+
+	}
+
+	public function retornaClasse(){
+		
+		get_class($obj);
+
+	}
+}
+
+// PROGRAMA PARA REPETIR NÚMEROS
+
+for($i = 5; $i <=15; $i++){
+	echo $i;
+}
+
+// CLASSE USUÁRIO
+
+class Usuario{
+
+	private $login;
+	private $senha;
+
+	public function getLogin(){
+
+		return $this->login;
+
+	}
+
+	public function setLogin($login){
+
+		$this->login = $login;
+	}
+
+	public function getSenha(){
+
+		return $this->login;
+	}
+
+	public function setSenhasenha($senha){
+
+		$this->senha = $senha;
+	}
+
+	public function senhaPadrao(){
+
+		$this->setSenha('12345');		
+			
+	}
+
+	public function validarSenha($senhaPadrao, $senha){
+
+		if($senha === $senhaPadrao){
+			echo("Senha corresponde!");
+		}
+		else{
+			echo("Senha incorreta");
+		}
 
 	}
 }
